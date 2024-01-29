@@ -17,18 +17,18 @@
     </style>
 </head>
 <body>
-    <h2>Invitation Paragraph Generator</h2>
+<h2>Invitation Paragraph Generator</h2>
     <label for="nameInput">Nama Panjang :</label>
     <input type="text" id="nameInput" placeholder="Ibok Gendut">
-    
+    <br>
     <label for="linkInput">Nama di Undangan :</label>
-    <input type="text" id="linkInput" placeholder="kosongkan apabila sama">
+<input type="text" id="linkInput" placeholder="kosongkan apabila sama">
 
-    <button onclick="generateAndShare()">GAS</button>
-    <button onclick="redirectToDirectory()">Naura</button>
+<button onclick="generateAndShare()" style="font-size:20px;">BUAT</button>
     <textarea id="output" readonly></textarea>
     <button onclick="copyToClipboard()">Copy to Clipboard</button>
-
+    <button onclick="naura()">NAURA</button>
+    <button onclick="bapak()">BAPAK</button>
     <script>
         function generateParagraph() {
             var fullName = document.getElementById("nameInput").value.trim();
@@ -102,9 +102,13 @@ Yogyakarta
             generateParagraph();
         }
 
-        function redirectToDirectory() {
+        function naura() {
             // Redirect to the specified directory
             window.location.href = "https://cornysz.github.io/naurarsvp/naura";
+        }
+        function bapak() {
+            // Redirect to the specified directory
+            window.location.href = "https://cornysz.github.io/naurarsvp/bapak";
         }
     </script>
 </body>
