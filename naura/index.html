@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Paragraph Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Invitation Paragraph Generator</h2>
+    <label for="nameInput">Nama Panjang :</label>
+    <input type="text" id="nameInput" placeholder="Ibok Gendut">
+    
+    <label for="linkInput">Nama di Undangan :</label>
+    <input type="text" id="linkInput" placeholder="kosongkan apabila sama">
 
+    <button onclick="generateParagraph()">GAS</button>
+    <textarea id="output" readonly></textarea>
+    <button onclick="shareText()">Share</button>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+
+    <script>
+        function generateParagraph() {
+            var fullName = document.getElementById("nameInput").value.trim();
+            var linkText = document.getElementById("linkInput").value.trim();
+
+            // If "Nama di Undangan" is provided, use it for displayed name, otherwise use the full name
+            var displayedName = linkText ? fullName : fullName;
+
+            if (!fullName) {
+                alert("Please enter a valid full name.");
+                return;
+            }
+
+            // Function to create the link based on the link text
+            function createLink(linkText) {
+                return linkText ? `https://naurafaiq.com/?to=${linkText.replace(/ /g, '+')}` : `https://naurafaiq.com/?to=${fullName.replace(/ /g, '+')}`;
+            }
+
+            var link = createLink(linkText);
+
+var paragraph = `Bismillahirahmanirrahim, Assalamu'alaikum Warahmatullahi Wabarakatuh
+
+Yth. *${displayedName}*,
+Dengan memohon rahmat dan ridho Allah SWT., dan tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan Naura Hassa Lalitya Cornika dan Khusna Muhammad Fa’iq, yang In syaa Allah akan dilaksanakan pada :
+📆 Sabtu, 24 Februari 2024 
+🕧 Pukul : 19.00 – 21.00 WIB
+📍 Imperial Ballroom The Rich Jogja Hotel, Yogyakarta
+
+Bersama ini kami sampaikan Undangan pada link berikut: ${link}
+
+✅ Mohon konfirmasi kehadiran dengan cara menuliskan Nama dan Jumlah Orang pada tautan undangan 
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan do’a restu.
+
+Terima kasih atas perhatiannya.
+Wassalamualaikum Wr. Wb.
+
+Hormat kami yang berbahagia
+Kedua Mempelai Beserta Keluarga
+`;
+
+
+            // Set the generated paragraph to the output textarea
+            document.getElementById("output").value = paragraph;
+        }
+
+        function shareText() {
+            var paragraph = document.getElementById("output").value;
+            if (navigator.share) {
+                navigator.share({
+                    text: paragraph,
+                    title: "Invitation Paragraph"
+                })
+                .then(() => console.log('Successfully shared'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                alert("Sharing is not supported on this device.");
+            }
+        }
+
+        function copyToClipboard() {
+            var outputTextarea = document.getElementById("output");
+            outputTextarea.select();
+            document.execCommand("copy");
+            alert("Paragraph copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
