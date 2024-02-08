@@ -25,11 +25,63 @@
     <input type="text" id="linkInput" placeholder="kosongkan apabila sama">
 
     <button onclick="generateAndShare()">GAS</button>
+    <button onclick="generateAndShare2()">GAS 2</button>
     <button onclick="redirectToDirectory()">Ibuk</button>
     <textarea id="output" readonly></textarea>
     <button onclick="copyToClipboard()">Copy to Clipboard</button>
 
     <script>
+      function generateParagraph() {
+                  var fullName = document.getElementById("nameInput").value.trim();
+                  var linkText = document.getElementById("linkInput").value.trim();
+
+                  // If "Nama di Undangan" is provided, use it for displayed name, otherwise use the full name
+                  var displayedName = linkText ? fullName : fullName;
+
+                  if (!fullName) {
+                      alert("Please enter a valid full name.");
+                      return;
+                  }
+
+                  // Function to create the link based on the link text
+                  function createLink(linkText) {
+                      return linkText ? `https://naurafaiq.com/?to=${linkText.replace(/ /g, '+')}` : `https://naurafaiq.com/?to=${fullName.replace(/ /g, '+')}`;
+                  }
+
+                  var link = createLink(linkText);
+      var paragraph = `Assalamu'alaikum wr. wb. 
+
+      Dengan kerendahan hati, kami bermaksud mengundang Yth. *${displayedName}*  untuk menghadiri resepsi syukuran pernikahan anak kami:
+
+      *Naura Hassa Lalitya Cornika* 
+      dengan
+      *Khusna Muhammad Fa’iq*
+
+      📆 Sabtu, 24 Februari 2024 
+      🕧 Jam: 19.00 – 21.00 WIB
+      📍 Imperial Ballroom The Rich Jogja Hotel, Yogyakarta
+
+      Tanpa mengurangi rasa hormat, bersama ini kami sampaikan Undangan digital dengan  link: ${link}
+
+      ✅ _Mohon untuk dapat melengkapi  konfirmasi kehadiran pada undangan diatas._
+
+      Merupakan suatu kebahagiaan bagi kami apabila berkenan untuk hadir dan memberikan doa restu.
+
+      Atas kehadirannya, kami ucapkan terima kasih 
+
+      Wassalamualaikum wr.wb. 
+
+      Hormat kami,
+      Isa FC - Sri Sugihastuti
+      Yogyakarta
+      `;
+
+                  // Set the generated paragraph to the output textarea
+                  document.getElementById("output").value = paragraph;
+
+                  // Share the generated paragraph
+                  shareText(paragraph);
+              }
         function generateParagraph() {
             var fullName = document.getElementById("nameInput").value.trim();
             var linkText = document.getElementById("linkInput").value.trim();
@@ -82,6 +134,57 @@ Yogyakarta
             shareText(paragraph);
         }
 
+      // NONISNONISNONISNONIS
+
+      function nonis() {
+                  var fullName = document.getElementById("nameInput").value.trim();
+                  var linkText = document.getElementById("linkInput").value.trim();
+
+                  // If "Nama di Undangan" is provided, use it for displayed name, otherwise use the full name
+                  var displayedName = linkText ? fullName : fullName;
+
+                  if (!fullName) {
+                      alert("Please enter a valid full name.");
+                      return;
+                  }
+
+                  // Function to create the link based on the link text
+                  function createLink(linkText) {
+                      return linkText ? `https://naurafaiq.com/?to=${linkText.replace(/ /g, '+')}` : `https://naurafaiq.com/?to=${fullName.replace(/ /g, '+')}`;
+                  }
+
+                  var link = createLink(linkText);
+      var paragraph = `Assalamu'alaikum, dan salam sejahtera...
+
+Dengan kerendahan hati, kami bermaksud mengundang Yth. *${displayedName}* untuk menghadiri resepsi syukuran pernikahan anak kami:
+
+*Naura Hassa Lalitya Cornika*
+dengan
+*Khusna Muhammad Fa’iq*
+
+📆 Sabtu, 24 Februari 2024 
+🕧 Jam: 19.00 – 21.00 WIB
+📍 Imperial Ballroom The Rich Jogja Hotel, Yogyakarta
+
+Tanpa mengurangi rasa hormat, bersama ini kami sampaikan Undangan digital dengan  link: ${link}
+
+_✅ Mohon untuk dapat melengkapi  konfirmasi kehadiran pada undangan diatas._
+
+Merupakan suatu kebahagiaan bagi kami apabila berkenan untuk hadir dan memberikan doa restu.
+
+Atas kehadirannya, kami ucapkan terima kasih. Salam.
+
+Hormat kami,
+Isa FC - Sri Sugihastuti
+Yogyakarta`;
+
+                  // Set the generated paragraph to the output textarea
+                  document.getElementById("output").value = paragraph;
+
+                  // Share the generated paragraph
+                  shareText(paragraph);
+              }
+      
         function shareText(text) {
             if (navigator.share) {
                 navigator.share({
@@ -105,6 +208,9 @@ Yogyakarta
         function generateAndShare() {
             generateParagraph();
         }
+      function generateAndShare2() {
+          nonis();
+      }
 
         function redirectToDirectory() {
             // Redirect to the specified directory
